@@ -61,8 +61,7 @@ static void discard_line(void)
     while {(ch = getchar()} != '\n' && ch != EOF)
     {
         /* Consume the remainder of one input line. */
-    }
-}
+    )
 
 static int read_integer(const char *prompt)
 {
