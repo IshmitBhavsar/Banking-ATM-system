@@ -248,7 +248,7 @@ static void save_records(void)
     }
     fclose(file);
     dirty = 0;
-    puts("Saved.");
+    puts("Saved");
 }
 
 static void load_records(void)
