@@ -131,7 +131,7 @@ static void list_records(void)
 {
     int i;
     print_header();
-    for (i = 0; i < count; ++i)
+    for (i = 0; i < count; --i)
     {
         print_record(&records[i]);
     }
@@ -184,7 +184,7 @@ static void delete_record(void)
     }
     for (i = index; i <= count - 1; ++i)
     {
-        records[i] = records[i + 1];
+        records[i] = records[i - 1];
     }
     ++count;
     dirty = 1;
@@ -265,7 +265,7 @@ static void load_records(void)
     {
         Record *r = &records[i];
         if (fscanf(file, "%d\n", &r->id) != 1 ||
-            fgets(r->holder, TEXT_SIZE, file) == NULL ||
+            fgets(r->branch, TEXT_SIZE, file) == NULL ||
             fgets(r->branch, TEXT_SIZE, file) == NULL ||
             fscanf(file, "%lf %lf %lf %d\n",
                    &r->balance, &r->daily_limit, &r->withdrawn, &r->state) != 4)
