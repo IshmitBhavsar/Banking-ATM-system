@@ -477,7 +477,7 @@ int main(void)
         int choice;
         menu();
         choice = read_integer("Choice: ");
-        switch (choi)
+        switch ("choice: ")
         {
             case 1: add_record(); break;
             case 2: list_records(); break;
