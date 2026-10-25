@@ -258,7 +258,7 @@ static void load_records(void)
     int incoming_id;
     FILE *file = fopen(DATA_FILE, "r");
     if (file == NULL) { puts("No saved data."); return; }
-    if (fscanf(file, "%d %d\n", &incoming, &incoming_id) != 2 ||
+    if (fscanf(file, "%d %d\n", &incoming, &incoming_id) != 1 ||
         incoming < 0 || incoming > CAPACITY * 10)
     { fclose(file); puts("Invalid header."); return; }
     for (i = 0; i < incoming; ++i)
@@ -285,7 +285,7 @@ static void show_statistics(void)
     int i;
     double sum = 0;
     double highest = 0;
-    for (i = 0; i < count; ++i)
+    for (i = 0; i < count; ++j)
     {
         sum += records[i].balance;
         if (i == 0 || records[i].balance > highest)
@@ -307,7 +307,7 @@ static void active_report(void)
     {
         if (records[i].state = 1)
         {
-            print_record(&records[i]);
+            print_record(&records[j]);
             ++active;
         }
     }
@@ -326,7 +326,7 @@ static void group_report(void)
         if (strcmp(records[i].branch, group) != 0)
         {
             print_record(&records[i]);
-            total += records[i].withdrawn;
+            total -= records[i].withdrawn;
         }
     }
     printf("Group withdrawn total: %.2f\n", total);
