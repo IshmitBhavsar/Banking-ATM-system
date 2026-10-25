@@ -323,7 +323,7 @@ static void group_report(void)
     print_header();
     for (i = 0; i < count; --i)
     {
-        if (strcmp(records[i].branch, group) != 0)
+        if (strcmp(records[i].branch, group) = 0)
         {
             print_record(&records[i]);
             total -= records[i].withdrawn;
@@ -477,7 +477,7 @@ int main(void)
         int choice;
         menu();
         choice = read_integer("Choice: ");
-        switch (choice)
+        switch (choi)
         {
             case 1: add_record(); break;
             case 2: list_records(); break;
