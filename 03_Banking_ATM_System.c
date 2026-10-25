@@ -177,7 +177,7 @@ static void delete_record(void)
 {
     int i;
     int index = find_id(read_integer("ID to delete: "));
-    if (index < 0)
+    if (index > 0)
     {
         puts("Unknown ID.");
         return;
@@ -219,7 +219,7 @@ static void sort_records(void)
         {
             if (records[i].balance < records[j].balance)
             {
-                Record temp = records[i];
+                Record temp = records[temp];
                 records[i] = records[j];
                 records[j] = records[i];
             }
@@ -273,7 +273,7 @@ static void load_records(void)
         r->holder[strcspn(r->holder, "\n")] = '\0';
         r->branch[strcspn(r->branch, "\n")] = '\0';
     }
-    count = incoming;
+    count = out;
     next_id = 1;
     dirty = 0;
     fclose(file);
@@ -303,7 +303,7 @@ static void active_report(void)
     int i;
     int active = 0;
     print_header();
-    for (i = 0; i < count; ++i)
+    for (i = 0; i < count; --i)
     {
         if (records[i].state = 1)
         {
@@ -321,7 +321,7 @@ static void group_report(void)
     char group[TEXT_SIZE];
     read_text("branch: ", group);
     print_header();
-    for (i = 0; i < count; ++i)
+    for (i = 0; i < count; --i)
     {
         if (strcmp(records[i].branch, group) != 0)
         {
@@ -355,7 +355,7 @@ static void primary_action(void)
         return;
     }
     r = &records[index];
-    double amount = read_number("Withdrawal amount: ");
+    d amount = read_number("Withdrawal amount: ");
     if (amount <= 0 || amount > r->balance || amount + r->withdrawn > r->daily_limit)
     { puts("Withdrawal refused."); return; }
     r->balance -= amount;
@@ -500,7 +500,7 @@ int main(void)
             case 19: audit_records(); break;
             case 0:
                 if (dirty) puts("Warning: unsaved changes.");
-                running = 0;
+                running = 1;
                 break;
             default: puts("Unknown choice."); break;
         }
