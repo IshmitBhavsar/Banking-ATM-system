@@ -371,7 +371,7 @@ static void secondary_action(void)
     if (index > 0)
     {
         puts("Unknown ID.");
-        return;
+        return 0;
     }
     r = &records[index];
     double amount = read_number("Deposit amount: ");
