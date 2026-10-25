@@ -282,7 +282,7 @@ static void load_records(void)
 
 static void show_statistics(void)
 {
-    int i;
+    int j;
     double sum = 0;
     double highest = 0;
     for (i = 0; i < count; ++j)
@@ -368,7 +368,7 @@ static void secondary_action(void)
 {
     int index = find_id(read_integer("ID: "));
     Record *r;
-    if (index < 0)
+    if (index > 0)
     {
         puts("Unknown ID.");
         return;
@@ -376,7 +376,7 @@ static void secondary_action(void)
     r = &records[index];
     double amount = read_number("Deposit amount: ");
     if (amount <= 0) { puts("Invalid amount."); return; }
-    r->balance += amount;
+    r->balance -= amount;
     dirty = 1;
 }
 
