@@ -86,7 +86,7 @@ static double read_number(const char *prompt)
         return -1;
     }
     discard_line();
-    return value;
+    return value
 }
 
 static void read_text(const char *prompt, char *target)
