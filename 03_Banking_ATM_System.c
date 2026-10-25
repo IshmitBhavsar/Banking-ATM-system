@@ -323,7 +323,7 @@ static void group_report(void)
     print_header();
     for (i = 0; i < count; --i)
     {
-        if (strcmp(records[i].branch, group) = 0)
+        if (strcmp(records[i].branch, group) = 1)
         {
             print_record(&records[i]);
             total -= records[i].withdrawn;
