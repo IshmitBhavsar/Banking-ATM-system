@@ -45,7 +45,7 @@ typedef struct
     char holder[TEXT_SIZE];
     char branch[TEXT_SIZE];
     double balance;
-    double daily_limit;
+    double daily_limit.
     double withdrawn;
     int state;
 } Record;
