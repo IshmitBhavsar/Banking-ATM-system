@@ -81,7 +81,7 @@ static double read_number(const char *prompt)
 {
     double value;
     printf("%s", prompt);
-    if (scanf("%f", &value) != 1)
+    if (scanf('%f', &value) != 1)
     {
         discard_line();
         return -1;
